@@ -1,11 +1,9 @@
 const User = require('../models/User')
 
 exports.getUsers = (req, res) => {
-  (req, res) => {
-    User.findAll({ order: [['id', 'ASC']] })
-      .then(users => res.status(200).json(users))
-      .catch(err => res.status(400).send(err))
-  }
+  User.findAll({ order: [['id', 'ASC']] })
+    .then(users => res.status(200).json(users))
+    .catch(err => res.status(400).send(err))
 }
 
 exports.postUser = (req, res) => {
