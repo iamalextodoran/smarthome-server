@@ -6,6 +6,35 @@ exports.getDevices = (req, res) => {
     .catch(err => res.status(400).send(err))
 }
 
+exports.getLights = (req, res) => {
+  Device.findAll({where: {
+    type: 'Light'
+  }})
+    .then(devices => res.status(200).json(devices))
+    .catch(err => res.status(400).send(err))
+}
+exports.getBlinds = (req, res) => {
+  Device.findAll({where: {
+    type: 'Blind'
+  }})
+    .then(devices => res.status(200).json(devices))
+    .catch(err => res.status(400).send(err))
+}
+exports.getWindows = (req, res) => {
+  Device.findAll({where: {
+    type: 'Window'
+  }})
+    .then(devices => res.status(200).json(devices))
+    .catch(err => res.status(400).send(err))
+}
+exports.getTemperatures = (req, res) => {
+  Device.findAll({where: {
+    type: 'Temperature'
+  }})
+    .then(devices => res.status(200).json(devices))
+    .catch(err => res.status(400).send(err))
+}
+
 exports.postDevice = (req, res) => {
   let { name, description, type, value, warm } = req.body
   let newDevice = {
