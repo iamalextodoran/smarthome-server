@@ -1,7 +1,8 @@
-const Room = require('../models/room')
+const { User, Room, Device} = require('../models')
+
 
 exports.getRooms = (req, res) => {
-  Room.findAll()
+  Room.findAll({ include: Device})
     .then(rooms => res.status(200).json(rooms))
     .catch(err => res.status(400).send(err))
 }
@@ -19,7 +20,7 @@ exports.postRoom = (req, res) => {
 }
 
 exports.getRoom = (req, res) => {
-  Room.findByPk(req.params.id)
+  Room.findByPk(req.params.id, {include: Device})
     .then(room => res.json(room))
     .catch(err => res.status(400).send(err))
 }

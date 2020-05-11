@@ -1,4 +1,4 @@
-const Device = require('../models/device')
+const { User, Room, Device} = require('../models')
 
 exports.getDevices = (req, res) => {
   Device.findAll()

@@ -1,36 +1,14 @@
-const Sequelize = require('sequelize')
-const db = require('../config/database')
-const Device = db.define('device', {
-  id: {
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
-    type: Sequelize.INTEGER
-  },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  description: {
-    type: Sequelize.STRING
-  },
-  type: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  value: {
-    type: Sequelize.INTEGER
-  },
-  warm: {
-    type: Sequelize.INTEGER
-  },
-  // roomId: {
-  //   type: Sequelize.STRING,
-  //   allowNull: false,
-  //   foreignKey: true
-  // }
-}, {
-  // options
-});
-
-module.exports = Device
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Device = sequelize.define('Device', {
+    name: DataTypes.STRING,
+    type: DataTypes.STRING,
+    description: DataTypes.STRING,
+    value: DataTypes.INTEGER,
+    warm: DataTypes.INTEGER
+  }, {});
+  Device.associate = function(models) {
+    Device.belongsTo(models.Room);
+  };
+  return Device;
+};

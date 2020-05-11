@@ -1,7 +1,8 @@
-const User = require('../models/User')
+const { User, Room, Device} = require('../models')
+
 
 exports.getUsers = (req, res) => {
-  User.findAll({ order: [['id', 'ASC']] })
+  User.findAll({ include: Room })
     .then(users => res.status(200).json(users))
     .catch(err => res.status(400).send(err))
 }
@@ -22,7 +23,7 @@ exports.postUser = (req, res) => {
 }
 
 exports.getUser = (req, res) => {
-  User.findByPk(req.params.id)
+  User.findByPk(req.params.id, {include: Room})
     .then(user => res.json(user))
     .catch(err => res.status(400).send(err))
 }
