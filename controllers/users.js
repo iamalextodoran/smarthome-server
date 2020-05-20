@@ -1,4 +1,4 @@
-const { User, Room, Device} = require('../models')
+const { User, Room, Device } = require('../models')
 
 
 exports.getUsers = (req, res) => {
@@ -23,7 +23,7 @@ exports.postUser = (req, res) => {
 }
 
 exports.getUser = (req, res) => {
-  User.findByPk(req.params.id, {include: Room})
+  User.findByPk(req.params.id, { include: Room })
     .then(user => res.json(user))
     .catch(err => res.status(400).send(err))
 }

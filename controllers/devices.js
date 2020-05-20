@@ -1,4 +1,4 @@
-const { User, Room, Device} = require('../models')
+const { User, Room, Device } = require('../models')
 
 exports.getDevices = (req, res) => {
   Device.findAll()
@@ -7,42 +7,51 @@ exports.getDevices = (req, res) => {
 }
 
 exports.getLights = (req, res) => {
-  Device.findAll({where: {
-    type: 'Light'
-  }})
+  Device.findAll({
+    where: {
+      type: 'Light'
+    }
+  })
     .then(devices => res.status(200).json(devices))
     .catch(err => res.status(400).send(err))
 }
 exports.getBlinds = (req, res) => {
-  Device.findAll({where: {
-    type: 'Blind'
-  }})
+  Device.findAll({
+    where: {
+      type: 'Blind'
+    }
+  })
     .then(devices => res.status(200).json(devices))
     .catch(err => res.status(400).send(err))
 }
 exports.getWindows = (req, res) => {
-  Device.findAll({where: {
-    type: 'Window'
-  }})
+  Device.findAll({
+    where: {
+      type: 'Window'
+    }
+  })
     .then(devices => res.status(200).json(devices))
     .catch(err => res.status(400).send(err))
 }
 exports.getTemperatures = (req, res) => {
-  Device.findAll({where: {
-    type: 'Temperature'
-  }})
+  Device.findAll({
+    where: {
+      type: 'Temperature'
+    }
+  })
     .then(devices => res.status(200).json(devices))
     .catch(err => res.status(400).send(err))
 }
 
 exports.postDevice = (req, res) => {
-  let { name, description, type, value, warm } = req.body
+  let { name, description, type, value, warm, RoomId } = req.body
   let newDevice = {
     name,
     description,
     type,
     value,
-    warm
+    warm,
+    RoomId
   }
   Device.create(newDevice)
     .then(res.json(newDevice))
@@ -56,13 +65,14 @@ exports.getDevice = (req, res) => {
 }
 
 exports.updateDevice = (req, res) => {
-  let { name, description, type, value, warm } = req.body
+  let { name, description, type, value, warm, RoomId } = req.body
   let updatedDevice = {
     name,
     description,
     type,
     value,
-    warm
+    warm,
+    RoomId
   }
   Device.update(updatedDevice, {
     where: { id: req.params.id }

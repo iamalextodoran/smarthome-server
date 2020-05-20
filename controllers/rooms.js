@@ -1,18 +1,19 @@
-const { User, Room, Device} = require('../models')
+const { User, Room, Device } = require('../models')
 
 
 exports.getRooms = (req, res) => {
-  Room.findAll({ include: Device})
+  Room.findAll({ include: Device })
     .then(rooms => res.status(200).json(rooms))
     .catch(err => res.status(400).send(err))
 }
 
 exports.postRoom = (req, res) => {
-  let { name, description, image } = req.body
+  let { name, description, image, UserId } = req.body
   let newRoom = {
     name,
     description,
-    image
+    image,
+    UserId
   }
   Room.create(newRoom)
     .then(res.json(newRoom))
@@ -20,17 +21,18 @@ exports.postRoom = (req, res) => {
 }
 
 exports.getRoom = (req, res) => {
-  Room.findByPk(req.params.id, {include: Device})
+  Room.findByPk(req.params.id, { include: Device })
     .then(room => res.json(room))
     .catch(err => res.status(400).send(err))
 }
 
 exports.updateRoom = (req, res) => {
-  let { name, description, image } = req.body
+  let { name, description, image, UserId } = req.body
   let updatedRoom = {
     name,
     description,
-    image
+    image,
+    UserId
   }
   Room.update(updatedRoom, {
     where: { id: req.params.id }
