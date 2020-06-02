@@ -8,11 +8,12 @@ exports.getRooms = (req, res) => {
 }
 
 exports.postRoom = (req, res) => {
-  let { name, description, image, UserId } = req.body
+  let { name, description, image, temperature, UserId } = req.body
   let newRoom = {
     name,
     description,
     image,
+    temperature,
     UserId
   }
   Room.create(newRoom)
@@ -27,11 +28,12 @@ exports.getRoom = (req, res) => {
 }
 
 exports.updateRoom = (req, res) => {
-  let { name, description, image, UserId } = req.body
+  let { name, description, image, temperature, UserId } = req.body
   let updatedRoom = {
     name,
     description,
     image,
+    temperature,
     UserId
   }
   Room.update(updatedRoom, {

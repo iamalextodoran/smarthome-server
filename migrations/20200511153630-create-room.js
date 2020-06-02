@@ -17,6 +17,9 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
+      temperature: {
+        type: Sequelize.INTEGER
+      },
       UserId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',

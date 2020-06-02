@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const Room = sequelize.define('Room', {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    image: DataTypes.STRING
+    image: DataTypes.STRING,
+    temperature: DataTypes.INTEGER
   }, {});
   Room.associate = function (models) {
     Room.hasMany(models.Device);

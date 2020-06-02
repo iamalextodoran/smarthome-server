@@ -33,19 +33,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      name: 'Temperature',
-      type: 'Temperature',
-      description: '',
-      RoomId: 1,
-      value: 23,
-      warm: 20,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-
-
-
-    {
       name: 'Main light',
       type: 'Light',
       description: '',
@@ -76,18 +63,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      name: 'Temperature',
-      type: 'Temperature',
-      description: '',
-      RoomId: 2,
-      value: 23,
-      warm: 20,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-
-
-    {
       name: 'Main light',
       type: 'Light',
       description: '',
@@ -116,17 +91,7 @@ module.exports = {
       warm: 0,
       createdAt: new Date(),
       updatedAt: new Date()
-    },
-    {
-      name: 'Temperature',
-      type: 'Temperature',
-      description: '',
-      RoomId: 3,
-      value: 23,
-      warm: 20,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },], {});
+    }], {});
   },
 
   down: (queryInterface, Sequelize) => {
