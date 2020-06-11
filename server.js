@@ -5,7 +5,7 @@ const app = express();
 
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => res.send('Root path'));
+app.use('/', require('./routes/root'));
 app.use('/users', require('./routes/users'))
 app.use('/rooms', require('./routes/rooms'))
 app.use('/devices', require('./routes/devices'))
