@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Device.associate = function(models) {
     Device.belongsTo(models.Room);
+    Device.belongsTo(models.User);
   };
   return Device;
 };

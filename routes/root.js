@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { Op } = require("sequelize");
 const { User, Room, Device } = require("../models");
 
 getUser = (req, res) => {
@@ -35,7 +36,7 @@ getRoom = (req, res) => {
 getUserDevices = (req, res) => {
   Device.findAll({
     where: {
-      RoomId: req.params.UserId,
+      UserId: req.params.UserId,
     }
   })
     .then((rooms) => res.status(200).json(rooms))
