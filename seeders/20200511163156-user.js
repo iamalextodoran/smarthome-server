@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [{
       name: 'John',
       email: 'demo@demo.com',
-      city: 'New York',
+      city: 'Cluj-Napoca',
       temperature: 23,
       temperatureMode: 'Eco',
       image: 'https://source.unsplash.com/N2IJ31xZ_ks/500x500',

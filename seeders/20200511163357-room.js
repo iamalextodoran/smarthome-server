@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Rooms', [{
       name: 'Johns room',
-      description: 'My bedroom',
+      description: 'My own bedroom',
       image: 'https://source.unsplash.com/JIUjvqe2ZHg',
       temperature: 23,
       UserId: 1,
@@ -13,7 +13,7 @@ module.exports = {
     },
     {
       name: 'Living room',
-      description: 'My living room',
+      description: 'My cozy living room',
       image: 'https://source.unsplash.com/17NCG_wOkMY',
       temperature: 23,
       UserId: 1,
